@@ -1,0 +1,47 @@
+﻿<html ng-app="registrationModule">
+<head>
+    <base href="/">
+    <title>QR Code Tracking</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-resource.js"></script>
+    <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Scripts/ui-bootstrap-tpls-1.1.0.min.js"></script>
+    <script src="~/Scripts/angular-sanitize.js"></script>
+    
+    <script src="~/Scripts/registration-module.js"></script>
+    <script src="~/Scripts/Trackings/trackings-controller.js"></script>
+    <script src="~/Scripts/Trackings/tracking-controller.js"></script>
+    <script src="~/Scripts/Trackings/tracking-repository.js"></script>
+    <script src="~/Scripts/Trackings/add-tracking-controller.js"></script>
+    <script src="~/Scripts/Trackings/code-repository.js"></script>
+    <script src="~/Scripts/Trackings/edit-tracking-controller.js"></script>
+    <script src="~/Scripts/datefilter.js"></script>
+   
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="navbar navbar-default">
+                <div class="navbar-header">
+                    <ul class="nav navbar-nav">
+                        <li><span class="navbar-brand">Registration</span></li>
+                    </ul>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Trackings">Browse Instructors</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div ng-view></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<div class="row">
+    <div class="col-md-10">
+        <h2>Create QR Tracking</h2>
+    </div>
+</div>
+<div class="well">
+    <form class="form-horizontal" novalidate name="Form">
+        <div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Order Date</label>
+                <div class="col-md-10">
+                    <p class="input-group">
+                        <input type="text" name="orderDate" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="tracking.orderDate" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                    <span class="error" ng-show="Form.orderDate.$error.required">Please enter Order Date</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Mo Number</label>
+                <div class="col-md-10">
+                    <input type="text" name="moNum" ng-model="tracking.moNum" class="form-control" required />
+                    <span class="error" ng-show="Form.moNum.$error.required">Please enter Mo Number</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Shift</label>
+                <div class="col-md-10">
+                    <select name="qrShift" class="form-control" ng-model="tracking.qrShift" ng-options="shift for shift in shifts"></select>
+                    <span class="error" ng-show="Form.Shift.$error.required">Please enter Shift</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Operators</label>
+                <div class="col-md-10">
+                    <textarea rows="5" name="Operators" type="text" ng-model="tracking.qrOperators" class="form-control" required />
+                    <span class="error" ng-show="Form.Operators.$error.required">Please enter Operators</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Comments</label>
+                <div class="col-md-10">
+                    <textarea rows="5" name="Comments" type="text" ng-model="tracking.qrComments" class="form-control" />
+                </div>
+            </div>
+
+            <input type="button" class="btn btn-default" value="Cancel" ng-click="cancelForm()" />
+            <input type="button" class="btn btn-primary" value="Save" ng-click="submitForm(tracking)" />
+            <div style="color:red;" ng-show="error">An error occurred saving your tracking.</div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,106 @@
+﻿<div class="row">
+    <div class="col-md-10">
+        <h2>QR Code Tracking Detail</h2>
+    </div>
+</div>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Id</dt>
+        <dd>{{data.tracking.id}}</dd>
+        
+        <dt>Order Date</dt>
+        <dd>{{data.tracking.orderDate | date}}</dd>
+        
+        <dt>Number</dt>
+        <dd>{{data.tracking.moNum}}</dd>
+        
+        <dt>Shift</dt>
+        <dd>{{data.tracking.qrShift}}</dd>
+        
+        <dt>Operators</dt>
+        <dd>{{data.tracking.qrOperators}}</dd>
+
+        <dt>Comments</dt>
+        <dd>{{data.tracking.qrComments}}</dd>
+    </dl>
+</div>
+
+<uib-tabset>
+    <uib-tab heading="Adding barcodes">
+        <div>
+
+            <div>
+                <div class="span10">
+                    <table class="table table-condensed table-hover" ng-show="data.lastCodes.length>0">
+                        <tr>
+                            <th>barcode</th>
+                            <th>qrCodeLine</th>
+                            <th>scanDateTime</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="code in data.lastCodes">
+                            <td>{{code.barcode }}</td>
+                            <td>{{code.qrCodeLine}}</td>
+                            <td>{{code.scanDateTime | date:'MM/dd/yyyy H:mm' }}</td>
+                            <td style="width:20px;" ng-click="deleteScan(code)"><a href="#"><span class="glyphicon glyphicon-remove"></span></a></td>
+
+                        </tr>
+                    </table>
+                    <div ng-hide="data.lastCodes.length>0"><p>No barcode data</p></div>
+                </div>
+            </div>
+
+            <div class="well">
+                <form class="form-horizontal">
+                    <div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Barcode</label>
+                            <div class="col-md-10">
+                                <input id="barcodeInput" type="text" ng-model="data.barcodeInput" class="form-control" ng-change="barcodeChanged()" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">QR Code</label>
+                            <div class="col-md-10">
+                                <textarea id="qrCodeInput" rows="5" type="text" ng-model="data.qrCodeInput" class="form-control" ng-change="qrCodeChanged()" required />
+                            </div>
+                        </div>
+                        <div style="color:red;" ng-show="error">An error occurred saving your tracking.</div>
+                    </div>
+                </form>
+            </div>
+
+            <button type="button" class="btn btn-primary" ng-click="clear()">
+                 <span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear Last Barcodes
+            </button>
+        </div>
+    </uib-tab>
+
+    <uib-tab heading="All barcodes">
+        <div>
+
+            <div>
+                <div class="span10">
+                    <table class="table table-condensed table-hover" ng-show="data.codes.length>0">
+                        <tr>
+                            <th>barcode</th>
+                            <th>qrCodeLine</th>
+                            <th>scanDateTime</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="code in data.codes">
+                            <td>{{code.barcode }}</td>
+                            <td>{{code.qrCodeLine}}</td>
+                            <td>{{code.scanDateTime | date:'MM/dd/yyyy H:mm' }}</td>
+                            <td style="width:20px;" ng-click="deleteScan(code)"><a href="#"><span class="glyphicon glyphicon-remove"></span></a></td>
+
+                        </tr>
+                    </table>
+                    <div ng-hide="data.codes.length>0"><p>No barcode data</p></div>
+                </div>
+            </div>
+        </div>    
+    </uib-tab>
+</uib-tabset>
+
