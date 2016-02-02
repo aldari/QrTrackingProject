@@ -23,28 +23,35 @@
         </span>
     </p>
 </div>
-    <div class="row">
-        <div class="span10">
-            <table class="table table-condensed table-hover">
-                <tr>
-                    <th></th>
-                    <th>OrderDate</th>
-                    <th>Mo Number</th>
-                    <th>Shift</th>
-                    <th>Operators</th>
-                    <th>Comments</th>
-                    <th></th>
-                </tr>
-                <tr ng-repeat="tracking in trackings | upComing:'orderDate': dateStart : dateEnd | orderBy:'-orderDate'">
-                    <td style="width:20px;"><a href="/Trackings/{{tracking.id}}"><span class="glyphicon glyphicon-folder-open"></span></a></td>
-                    <td>{{tracking.orderDate | Date }}</td>
-                    <td>{{tracking.moNum}}</td>
-                    <td>{{tracking.qrShift}}</td>
-                    <td>{{tracking.qrOperators}}</td>
-                    <td>{{tracking.qrComments}}</td>
-                    <td style="width:20px;"><a ng-href="/Trackings/Edit/{{tracking.id}}" href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
-                </tr>
-            </table>
-        </div>
+
+<div class="col-md-10">
+    <p class="form-group">
+        <input type="text" name="searchPattern" class="form-control" ng-model="model.searchPattern" />
+    </p>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <table class="table table-condensed table-hover">
+            <tr>
+                <th></th>
+                <th>OrderDate</th>
+                <th>Mo Number</th>
+                <th>Shift</th>
+                <th>Operators</th>
+                <th>Comments</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="tracking in trackings | upComing:'orderDate': dateStart : dateEnd | orderBy:'-orderDate'">
+                <td style="width:20px;"><a href="/Trackings/{{tracking.id}}"><span class="glyphicon glyphicon-folder-open"></span></a></td>
+                <td>{{tracking.orderDate | Date }}</td>
+                <td>{{tracking.moNum}}</td>
+                <td>{{tracking.qrShift}}</td>
+                <td>{{tracking.qrOperators}}</td>
+                <td>{{tracking.qrComments}}</td>
+                <td style="width:20px;"><a ng-href="/Trackings/Edit/{{tracking.id}}" href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
+            </tr>
+        </table>
     </div>
+</div>
 
