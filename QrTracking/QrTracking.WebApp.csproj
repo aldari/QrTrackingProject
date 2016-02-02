@@ -222,6 +222,7 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\registration-module.js" />
     <Content Include="Scripts\example.js" />
+    <Content Include="Scripts\Trackings\dateFilter.js" />
     <Content Include="Scripts\Trackings\edit-tracking-controller.js" />
     <Content Include="Scripts\Trackings\add-tracking-controller.js" />
     <Content Include="Scripts\Trackings\code-repository.js" />
