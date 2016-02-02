@@ -19,5 +19,6 @@ namespace MasterDetail.WebApp.Entity
 
         void DeleteCode(int id);
 
+        IEnumerable<TrackingSearchVm> SearchByCodebar(string part);
     }
 }

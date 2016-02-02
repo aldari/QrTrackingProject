@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\CodeController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -184,7 +185,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CodeSearchVm.cs" />
     <Compile Include="Models\CodeVm.cs" />
+    <Compile Include="Models\TrackingSearchVm.cs" />
     <Compile Include="Models\TrackingVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -222,16 +225,19 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\registration-module.js" />
     <Content Include="Scripts\example.js" />
+    <Content Include="Scripts\Trackings\search-repository.js" />
     <Content Include="Scripts\Trackings\dateFilter.js" />
     <Content Include="Scripts\Trackings\edit-tracking-controller.js" />
     <Content Include="Scripts\Trackings\add-tracking-controller.js" />
     <Content Include="Scripts\Trackings\code-repository.js" />
     <Content Include="Scripts\Trackings\tracking-repository.js" />
     <Content Include="Scripts\Trackings\tracking-controller.js" />
+    <Content Include="Scripts\Trackings\search-controller.js" />
     <Content Include="Scripts\Trackings\trackings-controller.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-1.1.0.min.js" />
     <Content Include="templates\edittracking.html" />
     <Content Include="templates\addtracking.html" />
+    <Content Include="templates\search.html" />
     <Content Include="templates\tracking.html" />
     <Content Include="templates\trackings.html" />
     <Content Include="Web.config" />

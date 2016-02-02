@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using MasterDetail.WebApp.Models;
 
@@ -69,6 +71,13 @@ namespace MasterDetail.WebApp.Entity
                 context.QrCodes.Remove(code);
                 context.SaveChanges();
             }
+        }
+
+        public IEnumerable<TrackingSearchVm> SearchByCodebar(string template)
+        {
+            return context.QrTrackings.Where(p => p.QrCodes.Any(c => c.Barcode.Contains(template))).Include(x=>x.QrCodes)
+                .Select(x => new TrackingSearchVm { Id = x.Id, MoNum = x.MoNum, OrderDate = x.OrderDate, 
+                    QrComments = x.QrComments, QrOperators = x.QrOperators, QrShift = x.QrShift, Codes = x.QrCodes.Where(z=>z.Barcode.Contains(template)).Select(y => new CodeSearchVm{ Id = y.Id, Barcode = y.Barcode, QrCodeLine = y.QrCodeLine, ScanDateTime = y.ScanDateTime}).ToList()});
         }
     }
 }
