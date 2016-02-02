@@ -7,29 +7,33 @@
     </div>
 </div>
 
-<div class="col-md-10">
-    <p class="input-group">
-        <input type="text" name="dateStart" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="dateStart" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
-        </span>
-    </p>
-</div>
-<div class="col-md-10">
-    <p class="input-group">
-        <input type="text" name="dateEnd" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="dateEnd" is-open="popup2.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
-        </span>
-    </p>
-</div>
+<form class="form-horizontal" novalidate>
+    <div class="col-md-10">
+        <label class="col-sm-3 control-label">Period Begin</label>
+        <p class="input-group">
+            <input type="text" name="dateStart" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="dateStart" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+    </div>
+    <div class="col-md-10">
+        <label class="col-sm-3 control-label">Period End</label>
+        <p class="input-group">
+            <input type="text" name="dateEnd" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="dateEnd" is-open="popup2.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+    </div>
 
 <div class="col-md-10">
-    <p class="form-group">
-        <input type="text" name="searchPattern" class="form-control" ng-model="model.searchPattern" />
+    <label class="col-sm-3 control-label">MoNumber SubString</label>
+    <p class="input-group">
+        <input type="text" name="searchPattern" class="form-control" ng-model="moNumberPattern" />
     </p>
 </div>
-
+</form>
 <div class="row">
     <div class="span10">
         <table class="table table-condensed table-hover">
@@ -42,7 +46,7 @@
                 <th>Comments</th>
                 <th></th>
             </tr>
-            <tr ng-repeat="tracking in trackings | upComing:'orderDate': dateStart : dateEnd | orderBy:'-orderDate'">
+            <tr ng-repeat="tracking in trackings | filter: { moNum: moNumberPattern } | upComing:'orderDate': dateStart : dateEnd | orderBy:'-orderDate'">
                 <td style="width:20px;"><a href="/Trackings/{{tracking.id}}"><span class="glyphicon glyphicon-folder-open"></span></a></td>
                 <td>{{tracking.orderDate | Date }}</td>
                 <td>{{tracking.moNum}}</td>

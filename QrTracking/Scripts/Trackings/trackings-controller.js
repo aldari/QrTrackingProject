@@ -22,4 +22,10 @@ registrationModule.controller("TrackingsController", function($scope, trackingRe
     $scope.open2 = function () {
         $scope.popup2.opened = true;
     };
+
+    $scope.dates1 = $scope.trackings.map(function(item) {
+        if (item.indexOf($scope.moNumberPattern) != -1) {
+            return item;
+        }
+    });
 });
